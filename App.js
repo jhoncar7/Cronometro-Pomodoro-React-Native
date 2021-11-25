@@ -6,7 +6,7 @@ import { vibrate } from './utils';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Button title={'Vibracion'} onPress={()=>{vibrate()}}/>
+      <Button title={'Vibracion Phone'} onPress={()=>{vibrate()}}/>
       <StatusBar style="auto" />
     </View>
   );
