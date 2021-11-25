@@ -19,6 +19,7 @@ export default function App() {
     console.log(timeRemaining);
     if (timeRemaining===0) {
       vibrate();
+      setWork(prev=>!prev);
       setTimeRemaining(minTosec(work ? DEFAUL_BREAK_MINS : DEFAUL_WORK_MINS));
     }
   },[timeRemaining]);
