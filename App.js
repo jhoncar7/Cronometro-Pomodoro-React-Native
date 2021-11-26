@@ -17,10 +17,10 @@ export default function App() {
 
   useEffect(() => {
     console.log(timeRemaining);
-    if (timeRemaining===0) {
+    if (timeRemaining==-1) {
       vibrate();
       setWork(prev=>!prev);
-      setTimeRemaining(minTosec(work ? DEFAUL_BREAK_MINS : DEFAUL_WORK_MINS));
+      setTimeRemaining((work) ? minTosec(DEFAUL_BREAK_MINS) : minTosec(DEFAUL_WORK_MINS));
     }
   },[timeRemaining]);
 
@@ -46,6 +46,11 @@ export default function App() {
     setActiveTimer(!activeTimer); //setActiveTimer(prev => !prev);
   }
     
+  const restart = () => {
+    clearInterval(interval);
+    setActiveTimer(false);
+    setTimeRemaining((work) ? minTosec(DEFAUL_WORK_MINS) : minTosec(DEFAUL_BREAK_MINS));
+  }
 
   return (
     <View style={styles.container}>
@@ -54,7 +59,7 @@ export default function App() {
       <Cronometro timeRemaining={timeRemaining} />
       <View style={[styles.buttonContainer, styles.center]}>
         <Button title={(activeTimer) ? 'Pausar':'Iniciar'} onPress={onToogleButton}/>
-        <Button title={'Reiniciar'} />
+        <Button title={'Reiniciar'} onPress={restart}/>
       </View>
       <StatusBar style="auto" />
     </View>
