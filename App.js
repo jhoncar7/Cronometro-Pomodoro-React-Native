@@ -4,8 +4,8 @@ import { Button, StyleSheet, Text, View } from 'react-native';
 import { vibrate } from './utils';
 import Cronometro from './components/Cronometro'
 
-const DEFAUL_WORK_MINS = 1/6;
-const DEFAUL_BREAK_MINS = 1/4;
+const DEFAUL_WORK_MINS = 25;
+const DEFAUL_BREAK_MINS = 5;
 const minTosec = min => min * 60;
 var interval;
 
